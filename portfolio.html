@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio - Reelly Media</title>
+    <link rel="icon" type="image/x-icon" href="https://static.photos/technology/200x200/1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .portfolio-filter-btn {
+            transition: all 0.3s ease;
+        }
+        .portfolio-filter-btn.active {
+            background-color: #4f46e5;
+            color: white;
+        }
+        .portfolio-item {
+            transition: all 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .portfolio-overlay {
+            transition: all 0.3s ease;
+            opacity: 0;
+            background: rgba(79, 70, 229, 0.8);
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://static.photos/technology/200x200/1" alt="Reelly Media Logo">
+                        <span class="ml-2 text-xl font-bold text-gray-900">REELLY MEDIA</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                    <a href="services.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Services</a>
+                    <a href="#" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-indigo-600 text-sm font-medium">Portfolio</a>
+                    <a href="blog.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Blog</a>
+                    <a href="about.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">About</a>
+                    <a href="contact.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Contact</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu hidden md:hidden fixed inset-0 z-40 bg-white mt-16">
+        <div class="px-4 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">Home</a>
+            <a href="services.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">Services</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 bg-gray-100">Portfolio</a>
+            <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">Blog</a>
+            <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">About</a>
+            <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="pt-32 pb-20 px-4 sm:px-6 lg:pt-40 lg:pb-28 lg:px-8 bg-gradient-to-r from-indigo-500 to-purple-600">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
+                    <span class="block">Our Portfolio</span>
+                </h1>
+                <p class="mt-3 max-w-md mx-auto text-base text-gray-200 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                    See how we've helped businesses like yours succeed online.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Filter -->
+    <div class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="portfolio-filter-btn active px-4 py-2 rounded-full bg-indigo-100 text-indigo-800 font-medium" data-filter="all">
+                    All Work
+                </button>
+                <button class="portfolio-filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-800 font-medium" data-filter="web">
+                    Web Development
+                </button>
+                <button class="portfolio-filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-800 font-medium" data-filter="design">
+                    Graphics Design
+                </button>
+                <button class="portfolio-filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-800 font-medium" data-filter="marketing">
+                    Marketing
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Portfolio Item 1 (Web) -->
+                <div class="portfolio-item group relative bg-white rounded-lg overflow-hidden shadow-md" data-category="web">
+                    <div class="relative h-64 w-full overflow-hidden">
+                        <img class="w-full h-full object-cover" src="https://static.photos/technology/640x360/10" alt="E-commerce Website">
+                        <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                            <a href="portfolio-item.html" class="text-white text-lg font-medium px-4 py-2 border-2 border-white rounded-md hover:bg-white hover:text-indigo-600 transition-colors">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                                <i data-feather="code"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">E-commerce Platform</h3>
+                                <p class="mt-1 text-sm text-gray-500">Web Development</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base text-gray-600">
+                            Custom e-commerce solution with advanced product filtering and payment integration.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 (Design) -->
+                <div class="portfolio-item group relative bg-white rounded-lg overflow-hidden shadow-md" data-category="design">
+                    <div class="relative h-64 w-full overflow-hidden">
+                        <img class="w-full h-full object-cover" src="https://static.photos/workspace/640x360/11" alt="Brand Identity">
+                        <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                            <a href="portfolio-item.html" class="text-white text-lg font-medium px-4 py-2 border-2 border-white rounded-md hover:bg-white hover:text-indigo-600 transition-colors">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i data-feather="image"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Corporate Branding</h3>
+                                <p class="mt-1 text-sm text-gray-500">Graphics Design</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base text-gray-600">
+                            Complete brand identity package including logo, style guide, and marketing materials.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 (Marketing) -->
+                <div class="portfolio-item group relative bg-white rounded-lg overflow-hidden shadow-md" data-category="marketing">
+                    <div class="relative h-64 w-full overflow-hidden">
+                        <img class="w-full h-full object-cover" src="https://static.photos/office/640x360/12" alt="Marketing Campaign">
+                        <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                            <a href="portfolio-item.html" class="text-white text-lg font-medium px-4 py-2 border-2 border-white rounded-md hover:bg-white hover:text-indigo-600 transition-colors">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">
+                                <i data-feather="mail"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Email Campaign</h3>
+                                <p class="mt-1 text-sm text-gray-500">Marketing</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base text-gray-600">
+                            Targeted email marketing campaign with 35% open rate and 12% conversion rate.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 (Web) -->
+                <div class="portfolio-item group relative bg-white rounded-lg overflow-hidden shadow-md" data-category="web">
+                    <div class="relative h-64 w-full overflow-hidden">
+                        <img class="w-full h-full object-cover" src="https://static.photos/technology/640x360/13" alt="Web Application">
+                        <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                            <a href="portfolio-item.html" class="text-white text-lg font-medium px-4 py-2 border-2 border-white rounded-md hover:bg-white hover:text-indigo-600 transition-colors">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                                <i data-feather="code"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">SaaS Platform</h3>
+                                <p class="mt-1 text-sm text-gray-500">Web Development</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base text-gray-600">
+                            Custom SaaS solution with user management, analytics dashboard, and API integration.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 (Design) -->
+                <div class="portfolio-item group relative bg-white rounded-lg overflow-hidden shadow-md" data-category="design">
+                    <div class="relative h-64 w-full overflow-hidden">
+                        <img class="w-full h-full object-cover" src="https://static.photos/design/640x360/14" alt="Website Redesign">
+                        <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                            <a href="portfolio-item.html" class="text-white text-lg font-medium px-4 py-2 border-2 border-white rounded-md hover:bg-white hover:text-indigo-600 transition-colors">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i data-feather="image"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Website Redesign</h3>
+                                <p class="mt-1 text-sm text-gray-500">Graphics Design</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base text-gray-600">
+                            Modern UI/UX redesign that increased conversion rates by 42%.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 (Marketing) -->
+                <div class="portfolio-item group relative bg-white rounded-lg overflow-hidden shadow-md" data-category="marketing">
+                    <div class="relative h-64 w-full overflow-hidden">
+                        <img class="w-full h-full object-cover" src="https://static.photos/marketing/640x360/15" alt="Content Strategy">
+                        <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                            <a href="portfolio-item.html" class="text-white text-lg font-medium px-4 py-2 border-2 border-white rounded-md hover:bg-white hover:text-indigo-600 transition-colors">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">
+                                <i data-feather="edit"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Content Strategy</h3>
+                                <p class="mt-1 text-sm text-gray-500">Marketing</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base text-gray-600">
+                            Comprehensive content strategy that increased organic traffic by 85% in 6 months.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <a href="contact.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
+                    Start Your Project
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Client Testimonials -->
+    <div class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Testimonials</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    What Our Clients Say
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <img class="h-12 w-12 rounded-full" src="https://static.photos/people/200x200/6" alt="Client 1">
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Lisa Thompson</h3>
+                                <p class="text-gray-500">Founder, RetailGrow</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-base text-gray-600">
+                            <p>"Reelly Media built our e-commerce platform from scratch and the results have been phenomenal. Our online sales increased by 120% in the first quarter post-launch. Their attention to detail and user experience focus is exceptional."</p>
+                        </div>
+                        <div class="mt-4 flex">
+                            <i data-feather="star" class="text-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <img class="h-12 w-12 rounded-full" src="https://static.photos/people/200x200/7" alt="Client 2">
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Robert Johnson</h3>
+                                <p class="text-gray-500">Marketing Director, TechCorp</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-base text-gray-600">
+                            <p>"We worked with Reelly Media on our corporate rebranding and website redesign. Their team was professional, creative, and delivered beyond our expectations. The new site has significantly improved our lead generation and customer engagement metrics."</p>
+                        </div>
+                        <div class="mt-4 flex">
+                            <i data-feather="star" class="text-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-indigo-700">
+        <div class="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                <span class="block">Ready to showcase your business?</span>
+                <span class="block">Let's create something amazing.</span>
+            </h2>
+            <p class="mt-4 text-lg leading-6 text-indigo-200">
+                Get in touch with our team to discuss your project requirements.
+            </p>
+            <a href="contact.html" class="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto">
+                Get Started
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Services</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="services.html#webdev" class="text-base text-gray-300 hover:text-white">Web Development</a></li>
+                        <li><a href="services.html#blogging" class="text-base text-gray-300 hover:text-white">Blogging</a></li>
+                        <li><a href="services.html#design" class="text-base text-gray-300 hover:text-white">Graphics Design</a></li>
+                        <li><a href="services.html#email" class="text-base text-gray-300 hover:text-white">Email Marketing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="about.html" class="text-base text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="portfolio.html" class="text-base text-gray-300 hover:text-white">Portfolio</a></li>
+                        <li><a href="blog.html" class="text-base text-gray-300 hover:text-white">Blog</a></li>
+                        <li><a href="contact.html" class="text-base text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Connect</h3>
+                    <div class="mt-4 flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-base text-gray-300">Subscribe to our newsletter</p>
+                        <form class="mt-2 flex">
+                            <input type="email" class="px-4 py-2 border border-gray-600 bg-gray-700 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Your email">
+                            <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-r-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <i data-feather="send"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between">
+                <p class="text-base text-gray-400">
+                    &copy; 2023 Reelly Media. All rights reserved.
+                </p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <span class="mx-2 text-gray-500">·</span>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                    <span class="mx-2 text-gray-500">·</span>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active state
+                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-indigo-100', 'text-indigo-800'));
+                filterButtons.forEach(btn => btn.classList.add('bg-gray-100', 'text-gray-800'));
+                button.classList.add('active', 'bg-indigo-100', 'text-indigo-800');
+                button.classList.remove('bg-gray-100', 'text-gray-800');
+
+                // Filter items
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Initialize Feather Icons
+        feather.replace();
+    </script>
+</body>
+</html>
